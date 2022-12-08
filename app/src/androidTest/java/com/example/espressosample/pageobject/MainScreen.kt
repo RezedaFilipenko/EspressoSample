@@ -11,6 +11,10 @@ class MainScreen {
     val menuCreateHabitId = R.id.actionCreateHabit
     val actionFilterId = R.id.action_filter
 
+    val textDarkTheme = "Dark theme"
+    val textSettings = "Settings"
+    val textHelpFAQ = "text	Help & FAQ"
+    val textAbout = "About"
 
     fun tapButton(id: Int){
         onView(
@@ -35,6 +39,23 @@ class MainScreen {
                 withText(text)
             )
         ).check(matches(isDisplayed()))
+    }
+    fun tapButtonInDialog(text: String){
+        onView(
+            allOf(
+                withId(R.id.title),
+                withText(text)
+            )
+        ).perform(click())
+    }
+
+    fun tapHabit(text: String){
+        onView(
+            allOf(
+                isDescendantOfA(withId(R.id.content)),
+                withText(text)
+            )
+        ).perform(click())
     }
 
 }

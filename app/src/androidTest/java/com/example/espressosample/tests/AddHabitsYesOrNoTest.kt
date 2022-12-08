@@ -33,6 +33,7 @@ class AddHabitsYesOrNoTest {
     val textXTimes = "15"
     val textInYDays = "31"
     val textTimesPerWeek = "5"
+    val textEnterOnlyName = "Vitamins"
 
 
 
@@ -79,6 +80,18 @@ class AddHabitsYesOrNoTest {
             tapButton(saveCreateHabitYeaOrNoId)
             checkScreenIsOpen()
         }
+    }
+
+    @Test
+    fun enterNameOnly(){
+        onboardingPage.tapButton(onboardingPage.skipId)
+        mainScreen.tapButton(mainScreen.menuCreateHabitId)
+        chooseTypeOfHabitScreen.tapButton(chooseTypeOfHabitScreen.yesOrNoId)
+        with(createHabitYeaOrNoScreen){
+            enterText(nameId, textEnterOnlyName)
+            tapButton(saveCreateHabitYeaOrNoId)
+        }
+        mainScreen.checkHabit(textEnterOnlyName)
     }
 
 
