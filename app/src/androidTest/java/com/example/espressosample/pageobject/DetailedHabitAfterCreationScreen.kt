@@ -17,6 +17,11 @@ class DetailedHabitAfterCreationScreen {
     val editId = R.id.action_edit_habit
     val questionTextId = R.id.questionLabel
 
+    val textExport = "Export"
+    val textDelete = "Delete"
+    val textDialogNO = "NO"
+    val textDialogYES = "YES"
+
 
     fun tapThreeDotButton(){
         onView(
@@ -49,6 +54,21 @@ class DetailedHabitAfterCreationScreen {
                 isDescendantOfA(withId(R.id.toolbar)),
                 hasSibling(withText(text)),
                 hasSibling(withChild(withId(R.id.action_edit_habit)))
+            )
+        ).perform(click())
+    }
+
+    fun tapRightMenuButton(text: String){
+        onView(
+            withText(text)
+        ).perform(click())
+    }
+
+    fun tapButtonInDialog(text: String){
+        onView(
+            allOf(
+                isDescendantOfA(withId(R.id.buttonPanel)),
+                withText(text)
             )
         ).perform(click())
     }

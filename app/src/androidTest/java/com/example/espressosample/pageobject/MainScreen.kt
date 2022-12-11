@@ -2,6 +2,7 @@ package com.example.espressosample.pageobject
 
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.assertion.ViewAssertions.doesNotExist
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import org.hamcrest.Matchers.allOf
@@ -15,6 +16,7 @@ class MainScreen {
     val textSettings = "Settings"
     val textHelpFAQ = "text	Help & FAQ"
     val textAbout = "About"
+
 
     fun tapButton(id: Int){
         onView(
@@ -40,6 +42,7 @@ class MainScreen {
             )
         ).check(matches(isDisplayed()))
     }
+
     fun tapButtonInDialog(text: String){
         onView(
             allOf(
@@ -58,4 +61,12 @@ class MainScreen {
         ).perform(click())
     }
 
+    fun checkHabitIsNotShown(text: String){
+        onView(
+            allOf(
+                isDescendantOfA(withId(R.id.content)),
+                withText(text)
+            )
+        ).check(doesNotExist())
+    }
 }
